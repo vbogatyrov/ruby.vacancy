@@ -1,2 +1,14 @@
-<h1>Home#index</h1>
+<h1>Hello, Rails</h1>
 <p>Find me in app/views/home/index.html.erb</p>
+
+<table>
+<% @men.each do |m| %>
+  <tr>
+  	<td><b><%=m.name1%> </b></td>
+  </tr>
+  <% m.skill.each do |skill| %>
+    <tr><td><%= skills.name %></td></tr>
+  <% end %>
+  
+<% end %>
+</table>
