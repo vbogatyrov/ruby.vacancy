@@ -1,0 +1,15 @@
+<h1>Man#index</h1>
+<p>Find me in app/views/man/index.html.erb</p>
+
+<form action=<%= new_man_path %> method="get">
+  <input type="submit" value="New person">
+</form>
+
+
+<table>
+  <% @allMen.each do |man| %>
+    <tr>
+      <td><%= link_to man.name1, man %></td>		
+    </tr>
+  <% end %>
+</table>

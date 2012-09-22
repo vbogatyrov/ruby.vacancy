@@ -1,0 +1,28 @@
+<h1>Man#new</h1>
+<p>Find me in app/views/man/new.html.erb</p>
+
+
+<h3> New person </h3>
+
+<table>  
+<%= form_for @man, :url => {:controller => 'man', :action => 'create'} do |f| %>
+  <tr>
+   <td>First name: </td> <td> <%= f.text_field :name1 %></td>
+  </tr>
+   <tr>
+   <td>Seconf name: </td> <td> <%= f.text_field :name2 %></td>
+  </tr>
+   <tr>
+   <td>Third name: </td> <td> <%= f.text_field :name3 %></td>
+  </tr>
+  <tr>
+    <td>Contact info: </td> <td><%= f.text_field :contact_info %></td>
+  </tr>
+  <tr>
+    <td>Desired salary: </td> <td><%= f.text_field :desired_salary %></td>
+  </tr>
+ <tr>
+   <td> Available for hire:</td> <td><%= f.check_box :seek_employment %></td>
+ </tr> 
+ <tr><td><%= f.submit %></td></tr>
+<% end %>

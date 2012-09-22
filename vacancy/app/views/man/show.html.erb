@@ -1,0 +1,30 @@
+<h1>Man#show</h1>
+<p>Find me in app/views/man/show.html.erb</p>
+
+<h3> <%= @person.name1 %> </h3>
+
+<table>  
+<%= form_for @person do |person_form| %>
+  <tr>
+   <td>First name: </td> <td> <%= person_form.text_field :name1 %></td>
+  </tr>
+   <tr>
+   <td>Seconf name: </td> <td> <%= person_form.text_field :name2 %></td>
+  </tr>
+   <tr>
+   <td>Third name: </td> <td> <%= person_form.text_field :name3 %></td>
+  </tr>
+  <tr>
+    <td>Contact info: </td> <td><%= person_form.text_field :contact_info %></td>
+  </tr>
+  <tr>
+    <td>Desired salary: </td> <td><%= person_form.text_field :desired_salary %></td>
+  </tr>
+ <tr>
+   <td> Available for hire:</td> <td><%= person_form.check_box :seek_employment %></td>
+ </tr> 
+ <tr><td><%= person_form.submit %></td></tr>
+<% end %>
+</table>
+
+

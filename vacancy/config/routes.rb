@@ -1,5 +1,9 @@
 Vacancy::Application.routes.draw do
+ 
   get "home/index"
+  
+  resources :man
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
