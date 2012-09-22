@@ -1,0 +1,35 @@
+﻿CREATE TABLE MAN (
+id SERIAL NOT NULL PRIMARY KEY,
+name1 VARCHAR(30) NOT NULL,
+name2 VARCHAR(30),
+name3 VARCHAR(30),
+contact_info TEXT,
+seek_employment BOOLEAN,
+desired_salary NUMERIC(15,0)
+);
+
+CREATE TABLE VACANCY (
+  id SERIAL NOT NULL PRIMARY KEY,
+  name TEXT NOT NULL,
+  add_date DATE NOT NULL DEFAULT CURRENT_DATE,
+  actual_till DATE,
+  salary NUMERIC(15,0),
+  contact_info TEXT NOT NULL
+);
+
+CREATE TABLE SKILL (
+  id SERIAL NOT NULL PRIMARY KEY,
+  name TEXT NOT NULL
+);
+
+CREATE TABLE MAN_SKILL (
+  man_id INTEGER NOT NULL REFERENCES MAN(id),
+  skill_id INTEGER NOT NULL REFERENCES SKILL(id),
+  UNIQUE (man_id, skill_id)
+);
+
+CREATE TABLE VACANCY_SKILL (
+  vacancy_id INTEGER NOT NULL REFERENCES VACANCY(id),
+  skill_id   INTEGER NOT NULL REFERENCES SKILL(id),
+  UNIQUE (vacancy_id, skill_id)
+);
