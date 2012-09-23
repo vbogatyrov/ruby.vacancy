@@ -4,8 +4,10 @@
 
 <h3> New person </h3>
 
-<table>  
-<%= form_for @man, :url => {:controller => 'man', :action => 'create'} do |f| %>
+  
+<%= form_for @man, :url => {:controller => 'man', :action => 'create'} do |f| -%>
+  <%= f.error_messages %>
+  <table>
   <tr>
    <td>First name: </td> <td> <%= f.text_field :name1 %></td>
   </tr>

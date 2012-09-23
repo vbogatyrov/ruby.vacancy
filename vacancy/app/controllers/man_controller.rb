@@ -4,8 +4,11 @@ class ManController < ApplicationController
   end
 
   def create
-    Man.new(params[:man]).save
-    redirect_to :action => 'index'
+    @man = Man.new(params[:man])
+    @man.save
+    if @man.valid?
+      redirect_to :action => 'index'
+    end
   end
 
   def new
