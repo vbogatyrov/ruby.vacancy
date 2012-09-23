@@ -1,10 +1,12 @@
 <h1>Man#show</h1>
 <p>Find me in app/views/man/show.html.erb</p>
 
-<h3> <%= @person.name1 %> </h3>
+<h3> <%= @man.name1 %> </h3>
 
-<table>  
-<%= form_for @person do |person_form| %>
+ 
+<%= form_for @man do |person_form| %>
+<%= person_form.error_messages %>
+<table> 
   <tr>
    <td>First name: </td> <td> <%= person_form.text_field :name1 %></td>
   </tr>
