@@ -1,7 +1,7 @@
 <h1>Man#show</h1>
 <p>Find me in app/views/man/show.html.erb</p>
 
-<%= javascript_include_tag :defaults %>
+<%= javascript_include_tag :application %>
 
 <h3> <%= @man.name1 %> </h3>
 
@@ -35,21 +35,28 @@
  <% @man.skills.each do |skill| %>
   <tr>
     <td><%= skill.name%></td>
-    <td> <%=link_to "delete", :action => "rem_skill" , :id => @man.id, :skill => skill.id  %></td> 
+    <td> 
+    	<%=
+    		link_to "delete", man_rem_skill_url(:id => @man.id, :skill_id => skill.id), 
+    		:remote  => true
+    		#:success => "alert(2)",
+    		#:fail    => "alert(1)",
+    	 %>    
+    </td> 
   </tr>
  <%end%>
  
  
  
- <!-- <tr>
+  <tr>
     <td>
       <% 
-        #ns =  Skill.find(:all).collect {|c| [ c._name, c.name ]}
-        #ns.push([nil, nil])
+        ns =  Skill.find(:all).collect {|c| [ c._name, c.name ]}
+        ns.push([nil, nil])
       %>
       <%= select :new_skill, :new_skill_name, ns %>
      </td>
-  </tr> -->
+  </tr> 
         
  <tr><td><%= person_form.submit %></td></tr>
 <% end %>

@@ -38,6 +38,7 @@ class ManController < ApplicationController
   end
   
   def rem_skill
-    render :nothing => true
+    #render :nothing => true
+    render :text => "alert('2')"
   end
 end
