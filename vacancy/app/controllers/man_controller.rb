@@ -6,7 +6,7 @@ class ManController < ApplicationController
   def create
     @man = Man.new(params[:man])
     @man.save
-    
+        
     if @man.valid?
       redirect_to :action => 'index'
     else 
@@ -26,7 +26,6 @@ class ManController < ApplicationController
   end
   
   def update
-    z = params
     @man = Man.find(params[:id])
     @man.update_attributes(params[:man])
     
@@ -39,6 +38,6 @@ class ManController < ApplicationController
   
   def rem_skill
     #render :nothing => true
-    render :text => "alert('2')"
+    render :text => "showAlert();"
   end
 end
