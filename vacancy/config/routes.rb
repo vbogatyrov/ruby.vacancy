@@ -2,8 +2,9 @@ Vacancy::Application.routes.draw do
  
   get "home/index"
   
-  resources :man
+  resources :man, :has_many => :skill
   
+#  map.resources :man, :has_many => :skill
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -15,6 +16,8 @@ Vacancy::Application.routes.draw do
   # Sample of named route:
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
   # This route can be invoked with purchase_url(:id => product.id)
+  
+  match 'man/:id/rem_skill' => 'man#rem_skill'
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products

@@ -26,6 +26,7 @@ class ManController < ApplicationController
   end
   
   def update
+    z = params
     @man = Man.find(params[:id])
     @man.update_attributes(params[:man])
     
@@ -34,5 +35,9 @@ class ManController < ApplicationController
     else
       render :template => "man/show"
     end
+  end
+  
+  def rem_skill
+    render :nothing => true
   end
 end

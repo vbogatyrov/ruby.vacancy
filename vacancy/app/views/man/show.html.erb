@@ -1,6 +1,8 @@
 <h1>Man#show</h1>
 <p>Find me in app/views/man/show.html.erb</p>
 
+<%= javascript_include_tag :defaults %>
+
 <h3> <%= @man.name1 %> </h3>
 
  
@@ -24,7 +26,31 @@
   </tr>
  <tr>
    <td> Available for hire:</td> <td><%= person_form.check_box :seek_employment %></td>
- </tr> 
+ </tr>
+ 
+ 
+ 
+ <tr><td><h4>Skills</h4></td></tr>
+ 
+ <% @man.skills.each do |skill| %>
+  <tr>
+    <td><%= skill.name%></td>
+    <td> <%=link_to "delete", :action => "rem_skill" , :id => @man.id, :skill => skill.id  %></td> 
+  </tr>
+ <%end%>
+ 
+ 
+ 
+ <!-- <tr>
+    <td>
+      <% 
+        #ns =  Skill.find(:all).collect {|c| [ c._name, c.name ]}
+        #ns.push([nil, nil])
+      %>
+      <%= select :new_skill, :new_skill_name, ns %>
+     </td>
+  </tr> -->
+        
  <tr><td><%= person_form.submit %></td></tr>
 <% end %>
 </table>
