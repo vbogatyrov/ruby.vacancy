@@ -37,7 +37,8 @@ class ManController < ApplicationController
   end
   
   def rem_skill
+    ManSkill.delete_all(["man_id = ? AND skill_id = ?", params[:id], params[:skill_id]])
+    render :text => "var z = document.getElementById(\"skill#{params[:skill_id]}\"); z.parentNode.removeChild(z);"
     #render :nothing => true
-    render :text => "showAlert();"
   end
 end

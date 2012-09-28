@@ -41,7 +41,7 @@
  <tr><td><h4>Skills</h4></td></tr>
  
  <% @man.skills.each do |skill| %>
-  <tr>
+  <tr id ="<%= "skill" + skill.id.to_s %>">
     <td><%= skill.name%></td>
     <td> 
     	<%=
