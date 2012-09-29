@@ -1,14 +1,8 @@
-<h1>Hello, Rails</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<h1>Кадровое агентство</h1>
 
-<table>
-<% @men.each do |m| %>
+<table width="25%">
   <tr>
-  	<td><b><%=m.name1%> </b></td>
+  	<td><b><%= link_to "Работники", man_index_path %> </b></td>
+  	<td align="right"><b><%= link_to "Вакансии" , opening_index_path %> </b></td>
   </tr>
-  <% m.skills.each do |skill| %>
-    <tr><td><%= skill.name %></td></tr>
-  <% end %>
-  
-<% end %>
 </table>

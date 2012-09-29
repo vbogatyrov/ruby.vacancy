@@ -4,5 +4,6 @@ class Skill < ActiveRecord::Base
   
   has_many :man_skill
 
-  has_many :man, :through => :man_skill
+  has_many :man,     :through => :man_skill
+  has_many :opening, :through => :opening_skill
 end

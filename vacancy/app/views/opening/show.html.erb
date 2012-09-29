@@ -1,0 +1,44 @@
+<h1>Opening#show</h1>
+<p>Find me in app/views/opening/show.html.erb</p>
+
+<h3> <%= @opening.name %> </h3>
+
+ 
+<%= form_for @opening do |f| %>
+<%= f.error_messages %>
+<table> 
+  <tr>
+   <td>Name: </td> <td> <%= f.text_field :name %></td>
+  </tr>
+  <tr>
+   <td>Add date: </td> <td> <%= f.date_select :add_date, :disabled => true %></td>
+  </tr>
+  <tr>
+   <td>Actual till: </td> <td> <%= f.date_select :actual_till, :include_blank => true %></td>
+  </tr>
+  <tr>
+   <td>Salary: </td> <td> <%= f.text_field :salary %></td>
+  </tr>
+  <tr>
+   <td>Contact info: </td> <td> <%= f.text_field :contact_info %></td>
+  </tr>
+ 
+ 
+ <tr><td><h4>Skills</h4></td></tr>
+ <% @opening.skills.each do |skill| %>
+  <tr id ="<%= "skill" + skill.id.to_s %>">
+    <td><%= skill.name%></td>
+    <td> 
+      <%=
+        link_to "delete", opening_rem_skill_url(:id => @opening.id, :skill_id => skill.id), 
+        :remote  => true
+        #:success => "alert('Oh-Ho');",
+        #:fail    => "alert(1)"
+       %>    
+    </td> 
+  </tr>
+ <%end%>
+ 
+ <tr><td><%= f.submit %></td></tr>
+<% end %>
+</table>

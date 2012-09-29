@@ -1,0 +1,14 @@
+<h1>Opening#index</h1>
+
+
+<form action=<%= new_opening_path %> method="get">
+  <input type="submit" value="Новая вакансия">
+</form> 
+ 
+<table>
+  <% @allOpening.each do |opening| %>
+    <tr>
+      <td><%= link_to opening.name, opening %></td>    
+    </tr>
+  <% end %>
+</table>
