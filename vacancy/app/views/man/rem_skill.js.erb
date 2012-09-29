@@ -1,0 +1,17 @@
+var z = document.getElementById("skill<%= @skillId %>"); 
+z.parentNode.removeChild(z);
+
+// Add skill to combobox
+var elSel = document.getElementsByTagName('select')[0];
+var elOptNew = document.createElement('option');
+elOptNew.text  = "<%= @skillName %>";
+elOptNew.value =  <%= @skillId %>;
+var elOptOld = elSel.options[elSel.selectedIndex];
+try {
+  elSel.add(elOptNew, elOptOld); // standards compliant; doesn't work in IE
+}
+catch(ex) {
+  elSel.add(elOptNew, elSel.selectedIndex); // IE only
+}
+
+  

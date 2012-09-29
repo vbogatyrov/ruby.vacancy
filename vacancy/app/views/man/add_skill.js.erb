@@ -1,0 +1,19 @@
+var tbl = document.getElementById('skill_table');
+var lastRow = tbl.rows.length;
+// if there's no header row in the table, then iteration = lastRow + 1
+var iteration = lastRow;
+var row = tbl.insertRow(lastRow);
+  
+// left cell
+var cellLeft = row.insertCell(0);
+var textNode = document.createTextNode("<%= @skillName %>");
+cellLeft.appendChild(textNode);
+  
+//  right cell
+var cellRight = row.insertCell(1);
+var deleteLink = document.createElement('a');
+deleteLink.setAttribute('href', "<%=  man_rem_skill_url(:id => @manId, :skill_id => @skillId) %>");
+deleteLink.innerHTML = "delete";
+deleteLink.setAttribute('data-remote', true);
+cellRight.appendChild(deleteLink);
+row.setAttribute('id', "skill<%= @skillId %>");

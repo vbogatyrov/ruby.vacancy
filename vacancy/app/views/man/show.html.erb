@@ -1,12 +1,3 @@
-<script language="JavaScript">
-  var alertCount = 0
-  function showAlert() {
-    alert(alertCount);
-    alertCount++;
-  }
-</script>
-
-
 <h1>Man#show</h1>
 <p>Find me in app/views/man/show.html.erb</p>
 
@@ -35,9 +26,11 @@
  <tr>
    <td> Available for hire:</td> <td><%= person_form.check_box :seek_employment %></td>
  </tr>
+ <tr><td><%= person_form.submit %></td></tr>
+ </table>
+<% end %>
  
- 
- 
+<table id="skill_table"> 
  <tr><td><h4>Skills</h4></td></tr>
  
  <% @man.skills.each do |skill| %>
@@ -53,19 +46,16 @@
     </td> 
   </tr>
  <%end%>
-  
-  <tr>
-    <td>
-      <% 
-        ns =  Skill.find(:all).collect {|c| [ c._name, c.name ]}
-        ns.push([nil, nil])
-      %>
-      <%= select :new_skill, :new_skill_name, ns %>
-     </td>
-  </tr> 
-        
- <tr><td><%= person_form.submit %></td></tr>
-<% end %>
 </table>
+
+
+<%= form_tag man_add_skill_path, :remote=>true  do %>
+<table>
+<tr>
+  <td> <%= select_tag :skill_id, options_for_select(@skillsToAdd) %> </td>
+  <td> <%= submit_tag "Add skill" %> </td>
+</tr>
+</table>
+<% end %>
 
 

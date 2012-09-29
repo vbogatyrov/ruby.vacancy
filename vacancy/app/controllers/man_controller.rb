@@ -20,6 +20,8 @@ class ManController < ApplicationController
 
   def show
     @man = Man.find(params[:id])
+    @skillsToAdd = Skill.find_by_sql("SELECT *  FROM skill WHERE id NOT IN (SELECT skill_id FROM man_skill WHERE man_id = #{@man.id})")
+    @skillsToAdd = @skillsToAdd.collect {|c| [ c.name, c.id ]}
   end
 
   def edit
@@ -38,7 +40,21 @@ class ManController < ApplicationController
   
   def rem_skill
     ManSkill.delete_all(["man_id = ? AND skill_id = ?", params[:id], params[:skill_id]])
-    render :text => "var z = document.getElementById(\"skill#{params[:skill_id]}\"); z.parentNode.removeChild(z);"
+    @skillId = params[:skill_id]
+    @skillName = Skill.find(params[:skill_id]).names
+
     #render :nothing => true
+    #render :text => "alert(\"callback\");"
+  end
+  
+  def add_skill
+    newManSkill = ManSkill.new()
+    newManSkill.man_id   = params[:id].to_i
+    newManSkill.skill_id = params[:skill_id].to_i
+    newManSkill.save
+
+    @skillId = newManSkill.skill_id
+    @skillName = Skill.find(params[:skill_id]).name
+    @manId = params[:id]
   end
 end

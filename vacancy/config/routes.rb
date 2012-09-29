@@ -18,8 +18,9 @@ Vacancy::Application.routes.draw do
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
   # This route can be invoked with purchase_url(:id => product.id)
   
-  match 'man/:id/rem_skill/:skill_id'     => 'man#rem_skill',      :as => :man_rem_skill
-  match 'opening/:id/rem_skill/:skill_id' => 'openingn#rem_skill', :as => :opening_rem_skill
+  match 'man/:id/rem_skill/:skill_id'     => 'man#rem_skill',     :as => :man_rem_skill
+  match 'opening/:id/rem_skill/:skill_id' => 'opening#rem_skill', :as => :opening_rem_skill
+  match 'man/:id/add_skill/'              => 'man#add_skill',     :as => :man_add_skill
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products

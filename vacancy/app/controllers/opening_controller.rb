@@ -22,7 +22,8 @@ class OpeningController < ApplicationController
     end
   end
   
-  def opening_rem_skill
+  def rem_skill
+    OpeningSkill.delete_all(["opening_id = ? AND skill_id = ?", params[:id], params[:skill_id]])
     render :text => "var z = document.getElementById(\"skill#{params[:skill_id]}\"); z.parentNode.removeChild(z);"
   end
 end
