@@ -12,7 +12,7 @@ cellLeft.appendChild(textNode);
 //  right cell
 var cellRight = row.insertCell(1);
 var deleteLink = document.createElement('a');
-deleteLink.setAttribute('href', "<%=  man_rem_skill_url(:id => @manId, :skill_id => @skill.id) %>");
+deleteLink.setAttribute('href', "<%=  opening_rem_skill_url(:id => @openingId, :skill_id => @skill.id) %>");
 deleteLink.innerHTML = "delete";
 deleteLink.setAttribute('data-remote', true);
 cellRight.appendChild(deleteLink);
@@ -20,7 +20,7 @@ row.setAttribute('id', "skill<%= @skill.id %>");
 
 
 // Remove option from combo box
-var elSel = document.getElementsByTagName('select')[0];
+var elSel = document.getElementById('skill_id');
   var i;
   for (i = elSel.length - 1; i>=0; i--) {
     if (elSel.options[i].value == <%= @skill.id %>) {

@@ -58,4 +58,13 @@
 </table>
 <% end %>
 
+<%= form_tag man_add_skill_path, :remote=>true  do %>
+<table>
+<tr>
+  <td> <%= text_field_tag :skill_name %> </td>
+  <td> <%= submit_tag "Add new skill" %> </td>
+</tr>
+</table>
+<% end %>
+
 

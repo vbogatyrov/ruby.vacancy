@@ -40,21 +40,26 @@ class ManController < ApplicationController
   
   def rem_skill
     ManSkill.delete_all(["man_id = ? AND skill_id = ?", params[:id], params[:skill_id]])
-    @skillId = params[:skill_id]
-    @skillName = Skill.find(params[:skill_id]).names
+    @skill = Skill.find(params[:skill_id])
 
     #render :nothing => true
     #render :text => "alert(\"callback\");"
   end
   
   def add_skill
+    if params[:skill_id]
+      @skill = Skill.find(params[:skill_id])
+    else
+      @skill = Skill.new()
+      @skill.name = params[:skill_name]
+      @skill.save
+    end
+
     newManSkill = ManSkill.new()
     newManSkill.man_id   = params[:id].to_i
-    newManSkill.skill_id = params[:skill_id].to_i
+    newManSkill.skill_id = @skill.id
     newManSkill.save
 
-    @skillId = newManSkill.skill_id
-    @skillName = Skill.find(params[:skill_id]).name
     @manId = params[:id]
   end
 end

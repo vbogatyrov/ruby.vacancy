@@ -2,7 +2,7 @@ var z = document.getElementById("skill<%= @skill.id %>");
 z.parentNode.removeChild(z);
 
 // Add skill to combobox
-var elSel = document.getElementsByTagName('select')[0];
+var elSel = document.getElementById('skill_id');
 var elOptNew = document.createElement('option');
 elOptNew.text  = "<%= @skill.name %>";
 elOptNew.value =  <%= @skill.id %>;

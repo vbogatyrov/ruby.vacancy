@@ -1,2 +1,21 @@
 <h1>Opening#new</h1>
 <p>Find me in app/views/opening/new.html.erb</p>
+
+<%= form_for @opening, :url => {:controller => 'opening', :action => 'create'} do |f| %>
+<%= f.error_messages %>
+<table> 
+  <tr>
+   <td>Name: </td> <td> <%= f.text_field :name %></td>
+  </tr>
+  <tr>
+   <td>Actual till: </td> <td> <%= f.date_select :actual_till, :include_blank => true %></td>
+  </tr>
+  <tr>
+   <td>Salary: </td> <td> <%= f.text_field :salary %></td>
+  </tr>
+  <tr>
+   <td>Contact info: </td> <td> <%= f.text_field :contact_info %></td>
+  </tr>
+  <tr><td><%= f.submit %></td></tr>
+</table>
+ <%end%>

@@ -22,8 +22,11 @@
   <tr>
    <td>Contact info: </td> <td> <%= f.text_field :contact_info %></td>
   </tr>
+  <tr><td><%= f.submit %></td></tr>
+</table>
+ <%end%>
  
- 
+ <table id="skill_table">
  <tr><td><h4>Skills</h4></td></tr>
  <% @opening.skills.each do |skill| %>
   <tr id ="<%= "skill" + skill.id.to_s %>">
@@ -32,13 +35,26 @@
       <%=
         link_to "delete", opening_rem_skill_url(:id => @opening.id, :skill_id => skill.id), 
         :remote  => true
-        #:success => "alert('Oh-Ho');",
-        #:fail    => "alert(1)"
        %>    
     </td> 
   </tr>
- <%end%>
- 
- <tr><td><%= f.submit %></td></tr>
-<% end %>
+ <% end %>
 </table>
+
+<%= form_tag opening_add_skill_path, :remote=>true  do %>
+<table>
+<tr>
+  <td> <%= select_tag :skill_id, options_for_select(@skillsToAdd) %> </td>
+  <td> <%= submit_tag "Add skill" %> </td>
+</tr>
+</table>
+<% end %>
+
+<%= form_tag opening_add_skill_path, :remote=>true  do %>
+<table>
+<tr>
+  <td> <%= text_field_tag :skill_name %> </td>
+  <td> <%= submit_tag "Add new skill" %> </td>
+</tr>
+</table>
+<% end %>
