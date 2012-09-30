@@ -20,8 +20,7 @@ class ManController < ApplicationController
 
   def show
     @man = Man.find(params[:id])
-    @skillsToAdd = Skill.find_by_sql("SELECT *  FROM skill WHERE id NOT IN (SELECT skill_id FROM man_skill WHERE man_id = #{@man.id})")
-    @skillsToAdd = @skillsToAdd.collect {|c| [ c.name, c.id ]}
+    @skillsToAdd = @man.skills_i_dont_have.collect {|skill| [ skill.name, skill.id ]}
   end
 
   def edit
