@@ -25,6 +25,8 @@ class OpeningController < ApplicationController
     @opening = Opening.find(params[:id])
     @skillsToAdd = Skill.find_by_sql("SELECT *  FROM skill WHERE id NOT IN (SELECT skill_id FROM opening_skill WHERE opening_id = #{@opening.id})")
     @skillsToAdd = @skillsToAdd.collect {|c| [ c.name, c.id ]}
+    @menComplete = @opening.men
+    @menPartly   = @opening.men(false)
   end
   
   def update   

@@ -32,12 +32,12 @@ class Man < ActiveRecord::Base
   def openings(exactMatch = true)
     skill_ids = skills.any? ? skills.map(&:id).join(',') : '0'
     Opening.find_by_sql("SELECT opening.id, opening.name, opening.salary, COUNT(os.skill_id) FROM opening
-                     INNER JOIN opening_skill AS os ON opening.id = os.opening_id
-                          WHERE (os.skill_id IN (#{skill_ids}))
-                            AND DATE(now()) <= DATE(opening.actual_till)
-                       GROUP BY opening.id, opening.name, opening.salary
+                           INNER JOIN opening_skill AS os ON opening.id = os.opening_id
+                         WHERE (os.skill_id IN (#{skill_ids}))
+                           AND DATE(now()) <= DATE(opening.actual_till)
+                         GROUP BY opening.id, opening.name, opening.salary
                          HAVING COUNT(os.skill_id) #{exactMatch ? '=' : '!='} (SELECT COUNT(*) FROM opening_skill WHERE opening_skill.opening_id = opening.id)
-                       ORDER BY opening.salary DESC")
+                         ORDER BY opening.salary DESC")
   end
   
   

@@ -58,3 +58,21 @@
 </tr>
 </table>
 <% end %>
+
+<p> Men who suit complete </p>
+<table>
+  <% @menComplete.each do |man| %>
+    <tr>
+      <td><%= link_to man.name1, man %></td>
+    </tr>
+  <% end %>  
+</table>
+
+<p> Men who suit partly </p>
+<table>
+  <% @menPartly.each do |man| %>
+    <tr>
+      <td><%= link_to man.name1, man %></td>
+    </tr>
+  <% end %> 
+</table>

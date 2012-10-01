@@ -21,6 +21,8 @@ class ManController < ApplicationController
   def show
     @man = Man.find(params[:id])
     @skillsToAdd = @man.skills_i_dont_have.collect {|skill| [ skill.name, skill.id ]}
+    @openingsComplete = @man.openings
+    @openingsPartly   = @man.openings(false)
   end
 
   def edit

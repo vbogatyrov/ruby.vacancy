@@ -67,4 +67,20 @@
 </table>
 <% end %>
 
+<p> Openings which suit complete </p>
+<table>
+  <% @openingsComplete.each do |opening| %>
+    <tr>
+      <td><%= link_to opening.name, opening %></td>
+    </tr>
+  <% end %>  
+</table>
 
+<p> Openings which suit Partly </p>
+<table>
+  <% @openingsPartly.each do |opening| %>
+    <tr>
+      <td><%= link_to opening.name, opening %></td>
+    </tr>
+  <% end %> 
+</table>
